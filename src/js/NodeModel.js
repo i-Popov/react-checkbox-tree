@@ -175,7 +175,7 @@ class NodeModel {
     }
 
     isEveryChildChecked(node) {
-        return node.children.every((child) => this.getNode(child.value).checked);
+        return node.children.find((child) => this.getNode(child.value).checked);
     }
 
     toggleNode(nodeValue, key, toggleValue) {
