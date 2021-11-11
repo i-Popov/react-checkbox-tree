@@ -6,7 +6,7 @@ const exec = require('gulp-exec');
 const gulp = require('gulp');
 const header = require('gulp-header');
 const less = require('gulp-less');
-const mocha = require('gulp-mocha');
+// const mocha = require('gulp-mocha');
 const sass = require('gulp-dart-sass');
 const styleLint = require('gulp-stylelint');
 const webpack = require('webpack');
@@ -31,17 +31,17 @@ gulp.task('test-script-format', () => (
         .pipe(eslint.failOnError())
 ));
 
-gulp.task('test-script-mocha', () => (
-    gulp.src(['./test/**/*.js'])
-        .pipe(mocha({
-            require: [
-                '@babel/register',
-                './test/setup.js',
-            ],
-        }))
-));
+// gulp.task('test-script-mocha', () => (
+//     gulp.src(['./test/**/*.js'])
+//         .pipe(mocha({
+//             require: [
+//                 '@babel/register',
+//                 './test/setup.js',
+//             ],
+//         }))
+// ));
 
-gulp.task('test-script', gulp.series(gulp.parallel('test-script-format', 'test-script-mocha')));
+gulp.task('test-script', gulp.series(gulp.parallel('test-script-format')));
 
 gulp.task('build-script', gulp.series('test-script', () => (
     gulp.src(['./src/index.js'])
